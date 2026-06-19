@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "AgentResult",
+  "required": [
+    "task_id",
+    "case_id",
+    "agent_name",
+    "status",
+    "tool_ids",
+    "skills_used",
+    "input_artifacts",
+    "output_artifacts",
+    "measurements",
+    "evidence",
+    "confidence",
+    "quality_flags",
+    "assumptions",
+    "limitations",
+    "errors",
+    "medical_sources",
+    "provenance",
+    "review_required"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "agent_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "partial",
+        "failed",
+        "insufficient_data",
+        "invalid_calibration",
+        "abstained"
+      ]
+    },
+    "tool_ids": {
+      "type": "array"
+    },
+    "skills_used": {
+      "type": "array"
+    },
+    "input_artifacts": {
+      "type": "array"
+    },
+    "output_artifacts": {
+      "type": "array"
+    },
+    "measurements": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "object"
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "quality_flags": {
+      "type": "array"
+    },
+    "assumptions": {
+      "type": "array"
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "errors": {
+      "type": "array"
+    },
+    "medical_sources": {
+      "type": "array"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "review_required": {
+      "type": "boolean"
+    }
+  }
+}

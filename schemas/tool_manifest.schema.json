@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "ToolManifest",
+  "required": [
+    "tool_id",
+    "version",
+    "created_for_case",
+    "purpose",
+    "input_contract",
+    "output_contract",
+    "tests_passed",
+    "validation_scope",
+    "clinical_validation",
+    "limitations",
+    "supersedes",
+    "git_commit"
+  ],
+  "properties": {
+    "tool_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "created_for_case": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "input_contract": {
+      "type": "string"
+    },
+    "output_contract": {
+      "type": "string"
+    },
+    "tests_passed": {
+      "type": "boolean"
+    },
+    "validation_scope": {
+      "type": "string"
+    },
+    "clinical_validation": {
+      "type": "boolean"
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "git_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

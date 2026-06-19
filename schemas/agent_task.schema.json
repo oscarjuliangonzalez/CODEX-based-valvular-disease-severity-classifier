@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "AgentTask",
+  "required": [
+    "task_id",
+    "case_id",
+    "agent_name",
+    "objective",
+    "input_artifacts",
+    "required_skills",
+    "required_output_schema",
+    "allowed_write_paths",
+    "medical_constraints",
+    "timeout_or_iteration_limit"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "agent_name": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "input_artifacts": {
+      "type": "array"
+    },
+    "required_skills": {
+      "type": "array"
+    },
+    "required_output_schema": {
+      "type": "string"
+    },
+    "allowed_write_paths": {
+      "type": "array"
+    },
+    "medical_constraints": {
+      "type": "array"
+    },
+    "timeout_or_iteration_limit": {
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  }
+}

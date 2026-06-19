@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "MeasurementResult",
+  "required": [
+    "measurement_id",
+    "metric",
+    "value",
+    "unit",
+    "per_frame_values",
+    "selected_frames",
+    "calibration_source",
+    "formula",
+    "uncertainty",
+    "ase_interpretation",
+    "technical_validity",
+    "reliability_weight_proposal",
+    "reliability_reason",
+    "artifact_paths",
+    "quality_flags"
+  ],
+  "properties": {
+    "measurement_id": {
+      "type": "string"
+    },
+    "metric": {
+      "type": "string"
+    },
+    "value": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "unit": {
+      "type": "string"
+    },
+    "per_frame_values": {
+      "type": "array"
+    },
+    "selected_frames": {
+      "type": "array"
+    },
+    "calibration_source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "formula": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uncertainty": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "ase_interpretation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "technical_validity": {
+      "type": "string",
+      "enum": [
+        "valid",
+        "limited",
+        "invalid"
+      ]
+    },
+    "reliability_weight_proposal": {
+      "type": "number"
+    },
+    "reliability_reason": {
+      "type": "string"
+    },
+    "artifact_paths": {
+      "type": "array"
+    },
+    "quality_flags": {
+      "type": "array"
+    }
+  }
+}

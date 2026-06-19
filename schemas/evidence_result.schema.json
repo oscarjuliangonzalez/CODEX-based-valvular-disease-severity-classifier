@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "EvidenceResult",
+  "required": [
+    "case_id",
+    "status",
+    "severity",
+    "evidence_vector",
+    "metric_contributions",
+    "trusted_metrics",
+    "downweighted_metrics",
+    "excluded_metrics",
+    "discordances",
+    "missing_information",
+    "guideline_provenance"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "object"
+    },
+    "evidence_vector": {
+      "type": "object"
+    },
+    "metric_contributions": {
+      "type": "array"
+    },
+    "trusted_metrics": {
+      "type": "array"
+    },
+    "downweighted_metrics": {
+      "type": "array"
+    },
+    "excluded_metrics": {
+      "type": "array"
+    },
+    "discordances": {
+      "type": "array"
+    },
+    "missing_information": {
+      "type": "array"
+    },
+    "guideline_provenance": {
+      "type": "array"
+    }
+  }
+}

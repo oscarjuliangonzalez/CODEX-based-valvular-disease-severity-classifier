@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "source_id": "ase_2017_native_valvular_regurgitation",
+      "title": "Recommendations for Noninvasive Evaluation of Native Valvular Regurgitation",
+      "source_file": "2017VavularRegurgitationGuideline.pdf",
+      "pages": 69,
+      "repository_status": "present_at_build_time",
+      "relevant_sections": [
+        "Aortic Regurgitation",
+        "Table 11",
+        "Figure 25"
+      ],
+      "implementation_uses": [
+        "AR thresholds",
+        "integrative assessment",
+        "PHT limitation",
+        "flow reversal interpretation"
+      ]
+    }
+  ],
+  "missing_sources": [
+    {
+      "source_id": "easypisa",
+      "expected": "EasyPISA article in repository",
+      "status": "not_found"
+    },
+    {
+      "source_id": "echopedia",
+      "expected": "EchoPedia AR resources in repository",
+      "status": "not_found"
+    },
+    {
+      "source_id": "handoff",
+      "expected": "handoff folder with MedSAM2 and prior examples",
+      "status": "not_found"
+    }
+  ],
+  "copyright_note": "Rules are paraphrased and source locations retained; long passages are not reproduced."
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "ToolEvolution",
+  "required": [
+    "failure_id",
+    "case_id",
+    "requested_tool_type",
+    "failure_mode",
+    "reproduction_steps",
+    "proposed_tool_id",
+    "validation_requirements",
+    "approval_status"
+  ],
+  "properties": {
+    "failure_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "requested_tool_type": {
+      "type": "string"
+    },
+    "failure_mode": {
+      "type": "string"
+    },
+    "reproduction_steps": {
+      "type": "array"
+    },
+    "proposed_tool_id": {
+      "type": "string"
+    },
+    "validation_requirements": {
+      "type": "array"
+    },
+    "approval_status": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "CaseManifest",
+  "required": [
+    "case_id",
+    "created_at",
+    "input_files",
+    "series",
+    "patient_metadata_redacted",
+    "calibration_summary",
+    "missing_information",
+    "file_hashes"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "input_files": {
+      "type": "array"
+    },
+    "series": {
+      "type": "array"
+    },
+    "patient_metadata_redacted": {
+      "type": "boolean"
+    },
+    "calibration_summary": {
+      "type": "object"
+    },
+    "missing_information": {
+      "type": "array"
+    },
+    "file_hashes": {
+      "type": "object"
+    }
+  }
+}

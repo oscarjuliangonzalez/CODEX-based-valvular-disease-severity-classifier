@@ -1,0 +1,25 @@
+source_id: ase_2017_native_valvular_regurgitation
+source_file: 2017VavularRegurgitationGuideline.pdf
+title: Recommendations for Noninvasive Evaluation of Native Valvular Regurgitation
+repository_status: present_at_build_time
+rules:
+  - rule_id: ar_integrative_assessment
+    section: Aortic Regurgitation
+    table_or_figure: Table 11 and Figure 25
+    pages: [38, 42, 43]
+    implementation_use: AR severity thresholds, specific mild/severe criteria, and indeterminate handling when findings are inconsistent.
+  - rule_id: vena_contracta_width
+    section: Aortic Regurgitation
+    table_or_figure: Table 11
+    pages: [38]
+    implementation_use: VCW severity-support thresholds.
+  - rule_id: pht_load_dependence
+    section: Aortic Regurgitation
+    table_or_figure: Table 11 and surrounding discussion
+    pages: [36, 37, 38]
+    implementation_use: PHT categories and load-dependent limitation.
+  - rule_id: flow_reversal
+    section: Aortic Regurgitation
+    table_or_figure: Figure 22 and Table 11
+    pages: [34, 38, 42]
+    implementation_use: Brief reversal nonspecific; holodiastolic reversal supports significant/severe AR depending site.

@@ -1,0 +1,4 @@
+source_id: echopedia
+repository_status: missing
+missing_information: EchoPedia resources were requested but no files were present in this repository checkout.
+implementation_use: none

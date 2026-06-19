@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "title": "MaskArtifact",
+  "required": [
+    "mask_id",
+    "mask_type",
+    "source_file",
+    "frame_index",
+    "artifact_path",
+    "original_shape",
+    "working_shape",
+    "transform_to_original",
+    "pixel_spacing_mm",
+    "confidence",
+    "completeness",
+    "quality_flags",
+    "tool_id",
+    "tool_version"
+  ],
+  "properties": {
+    "mask_id": {
+      "type": "string"
+    },
+    "mask_type": {
+      "type": "string"
+    },
+    "source_file": {
+      "type": "string"
+    },
+    "frame_index": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "artifact_path": {
+      "type": "string"
+    },
+    "original_shape": {
+      "type": "array"
+    },
+    "working_shape": {
+      "type": "array"
+    },
+    "transform_to_original": {
+      "type": "object"
+    },
+    "pixel_spacing_mm": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "completeness": {
+      "type": "number"
+    },
+    "quality_flags": {
+      "type": "array"
+    },
+    "tool_id": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    }
+  }
+}
