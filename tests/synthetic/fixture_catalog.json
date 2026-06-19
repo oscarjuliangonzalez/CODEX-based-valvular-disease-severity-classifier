@@ -1,0 +1,23 @@
+{
+  "fixtures": [
+    "multiframe_dicom_manifest_mock",
+    "color_doppler_central_jet",
+    "eccentric_wall_impinging_jet",
+    "multiple_jets",
+    "semicircular_pisa_contour",
+    "elliptic_convergence",
+    "incomplete_convergence_contour",
+    "cwd_known_vti",
+    "cwd_known_pht",
+    "pwd_brief_reversal",
+    "pwd_holodiastolic_reversal",
+    "lv_area_curve",
+    "volumetric_known_rvol_rf",
+    "discordant_metrics",
+    "missing_calibration",
+    "unknown_view",
+    "mask_review_rejection",
+    "repair_case"
+  ],
+  "note": "Synthetic fixtures are JSON manifests and deterministic arrays only; no PHI or patient images are included."
+}

@@ -1,0 +1,27 @@
+name: ar-codex-agents
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - pillow
+  - scikit-image
+  - imageio
+  - matplotlib
+  - pydicom
+  - nibabel
+  - simpleitk
+  - shapely
+  - statsmodels
+  - pydantic
+  - jsonschema
+  - pytest
+  - pytest-cov
+  - pyyaml
+  - python-dotenv
+  - pip:
+      - opencv-python
+      - highdicom
