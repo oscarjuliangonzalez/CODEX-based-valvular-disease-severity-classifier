@@ -12,3 +12,12 @@ It is not an autonomous diagnostic device and is not clinically validated. The b
     python scripts/smoke_test.py
 
 For future cases, place de-identified data under case_data/<case_id>/, invoke $ar-case-orchestration, and inspect outputs under runs/<case_id>/.
+
+## CLI Orchestration
+
+Run one fresh Codex session per case from the command line:
+
+    python scripts/run_ar_orchestration_cli.py --mode single --case-dir case_data/<case_id>
+    python scripts/run_ar_orchestration_cli.py --mode batch --cases-root case_data/
+
+Use `--dry-run` to inspect generated `codex exec --sandbox workspace-write` commands without invoking Codex.
