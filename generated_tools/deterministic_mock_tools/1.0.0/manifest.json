@@ -1,0 +1,16 @@
+{
+  "tool_id": "deterministic_mock_tools",
+  "version": "1.0.0",
+  "created_for_case": null,
+  "purpose": "Build-phase deterministic smoke tests and synthetic calculations.",
+  "input_contract": "schemas/agent_task.schema.json",
+  "output_contract": "schemas/agent_result.schema.json",
+  "tests_passed": true,
+  "validation_scope": "synthetic fixtures only",
+  "clinical_validation": false,
+  "limitations": [
+    "No real image processing"
+  ],
+  "supersedes": null,
+  "git_commit": null
+}

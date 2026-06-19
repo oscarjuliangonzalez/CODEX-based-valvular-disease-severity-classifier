@@ -1,0 +1,46 @@
+source_id: ase_2017_native_valvular_regurgitation
+source_file: 2017VavularRegurgitationGuideline.pdf
+section: Aortic Regurgitation
+table_or_figure: Table 11 and Figure 25
+pages: [38, 42, 43]
+thresholds:
+  vena_contracta_width_cm:
+    mild_supporting: "<0.3"
+    moderate_supporting: "0.3-0.6"
+    severe_supporting: ">0.6"
+  central_jet_width_lvot_ratio:
+    mild_supporting: "<0.25"
+    lower_moderate_supporting: "0.25-0.45"
+    upper_moderate_supporting: "0.46-0.64"
+    severe_supporting: ">=0.65"
+    limitation: "Valid mainly for central single jets."
+  central_jet_csa_lvot_csa_ratio:
+    mild_supporting: "<0.05"
+    lower_moderate_supporting: "0.05-0.20"
+    upper_moderate_supporting: "0.21-0.59"
+    severe_supporting: ">=0.60"
+    limitation: "Valid mainly for central single jets."
+  regurgitant_volume_ml_per_beat:
+    mild: "<30"
+    lower_moderate: "30-44"
+    upper_moderate: "45-59"
+    severe: ">=60"
+  regurgitant_fraction_percent:
+    mild: "<30"
+    lower_moderate: "30-39"
+    upper_moderate: "40-49"
+    severe: ">=50"
+  eroa_cm2:
+    mild: "<0.10"
+    lower_moderate: "0.10-0.19"
+    upper_moderate: "0.20-0.29"
+    severe: ">=0.30"
+  pressure_half_time_ms:
+    mild_supporting: ">500"
+    intermediate: "200-500"
+    severe_supporting: "<200"
+    limitation: "Load dependent."
+  flow_reversal:
+    brief_early_diastolic: nonspecific
+    descending_aorta_holodiastolic: supports_significant_ar
+    abdominal_aorta_holodiastolic: severe_supporting

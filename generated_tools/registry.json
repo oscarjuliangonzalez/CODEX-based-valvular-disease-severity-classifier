@@ -1,0 +1,22 @@
+{
+  "registry_version": "1.0.0",
+  "tools": [
+    {
+      "tool_id": "deterministic_mock_tools",
+      "version": "1.0.0",
+      "created_for_case": null,
+      "purpose": "CPU-compatible build-phase mock calculations and indeterminate synthetic orchestration.",
+      "input_contract": "schemas/agent_task.schema.json",
+      "output_contract": "schemas/agent_result.schema.json",
+      "tests_passed": true,
+      "validation_scope": "synthetic fixtures only; no clinical validation",
+      "clinical_validation": false,
+      "limitations": [
+        "Does not segment real echo images",
+        "Does not classify real cases"
+      ],
+      "supersedes": null,
+      "git_commit": null
+    }
+  ]
+}
