@@ -10,4 +10,4 @@ The parent Codex session is the orchestrator. Project custom agents define speci
 
 ## Safety
 
-The system defaults to indeterminate when calibration, evidence, artifact review, or medical provenance is insufficient. It stores independent JSON outputs and inspectable artifact paths for researcher validation.
+The current complete-exam execution model treats missing calibration, failed extraction, rejected artifacts, and absent quantitative evidence as repairable software/tooling defects. It stores independent JSON outputs, repair requests, and inspectable artifact paths for researcher validation while preserving the no-invented-measurement rule.

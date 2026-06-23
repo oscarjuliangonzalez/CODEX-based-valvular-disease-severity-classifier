@@ -40,6 +40,8 @@ No MedSAM2 input or output formats were discovered. The build scaffold defines J
 
 The ASE PDF was used for source-map anchoring of AR thresholds, PHT limitations, flow reversal interpretation, and integrative assessment references.
 
+For the complete-exam execution model, ASE guideline thresholds remain source-grounded while extraction failures are treated as software repair work. This audit does not add new medical thresholds or modify the stable equations.
+
 ## What Was Not Used
 
 MedSAM2 and other optional image services were not used because no endpoint or contract was present. EasyPISA and EchoPedia were not used because no repository files were present.

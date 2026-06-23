@@ -7,7 +7,7 @@ rules:
     section: Aortic Regurgitation
     table_or_figure: Table 11 and Figure 25
     pages: [38, 42, 43]
-    implementation_use: AR severity thresholds, specific mild/severe criteria, and indeterminate handling when findings are inconsistent.
+    implementation_use: AR severity thresholds, specific mild/severe criteria, and integrative handling of discordant quantitative findings without changing thresholds.
   - rule_id: vena_contracta_width
     section: Aortic Regurgitation
     table_or_figure: Table 11

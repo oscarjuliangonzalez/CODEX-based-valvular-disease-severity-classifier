@@ -32,14 +32,14 @@ Files: ar_core/, schemas/, scripts/, examples/
 
 - [x] Implement deterministic formulas and threshold interpretation.
 - [x] Add JSON schemas and validation script.
-- [x] Add synthetic indeterminate final report and smoke workflow.
+- [x] Add synthetic measurable final report and smoke workflow.
 
 ### Task 4: Codex Agentic Scaffold
 
 Files: AGENTS.md, .codex/agents/, .agents/skills/, prompts/
 
-- [x] Add project agent definitions with required instructions and abstention conditions.
-- [x] Add repository skills with output contracts, formulas, QC, abstention, and tool-evolution workflow.
+- [x] Add project agent definitions with required instructions and repair-trigger conditions.
+- [x] Add repository skills with output contracts, formulas, QC, measurable repair loops, and tool-evolution workflow.
 - [x] Add central orchestration, case, validation, and tool-repair prompts.
 
 ### Task 5: Documentation, Environment, Verification, GitHub

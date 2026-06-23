@@ -23,9 +23,11 @@ Evolvable adapters include DICOM/vendor parsers, image-layout parsers, color-map
 - Do not invent measurements or infer physical units without calibration.
 - Every specialist result must be saved as JSON under runs/<case_id>/agents/<agent_name>/result.json.
 - Masks, contours, measurement lines, spectral envelopes, overlays, plots, and transforms must be inspectable artifacts with paths in JSON.
-- Return indeterminate when evidence is insufficient, discordant, technically invalid, or missing required calibration.
+- For the provided complete high-quality exam set, never use a global not-enough-information fallback as the terminal result.
+- Treat missing calibration, failed extraction, rejected artifacts, unresolved views, or absent quantitative metrics as upstream engineering/tooling defects to repair, then rerun the measurement.
+- If the software cannot obtain required quantitative measurements, fail the run as an engineering failure with actionable repair logs rather than classifying the case as non-diagnostic.
 - Preserve discordant evidence; do not average it away.
-- Identify trusted, down-weighted, excluded, and missing metrics in final reports.
+- Identify trusted, down-weighted, excluded, repaired, and repair-requested metrics in final reports or audit logs.
 - Include guideline_provenance in final reports.
 - Do not claim clinical validation from synthetic fixtures.
 
@@ -37,7 +39,7 @@ Evolvable adapters include DICOM/vendor parsers, image-layout parsers, color-map
 
 ## Review Guidelines
 
-Prioritize medical safety, unit correctness, schema validity, provenance, privacy, abstention behavior, and test coverage. Findings should cite file paths and line numbers.
+Prioritize medical safety, unit correctness, schema validity, provenance, privacy, measurable complete-exam behavior, and test coverage. Findings should cite file paths and line numbers.
 
 ## Verification
 
