@@ -1,4 +1,5 @@
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -10,6 +11,9 @@ from scripts.run_ar_orchestration_cli import (
     render_case_prompt,
     run_cases,
 )
+
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def write_required_repo_files(root: Path) -> None:
@@ -126,6 +130,32 @@ def test_batch_stop_on_failure_controls_later_cases(tmp_path):
 
     assert len(results) == 1
     assert len(calls) == 1
+
+
+def test_cli_script_runs_directly_in_dry_run_mode(tmp_path):
+    write_required_repo_files(tmp_path)
+    case_dir = tmp_path / "case_data" / "case_001"
+    case_dir.mkdir(parents=True)
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_ar_orchestration_cli.py",
+            "--mode",
+            "single",
+            "--case-dir",
+            str(case_dir),
+            "--repo-root",
+            str(tmp_path),
+            "--dry-run",
+        ],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "case_001" in result.stdout
 
 
 def test_cli_source_does_not_use_forbidden_orchestration_frameworks():

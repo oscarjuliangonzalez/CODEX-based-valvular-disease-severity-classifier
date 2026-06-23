@@ -13,14 +13,14 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def test_example_final_report_validates_against_schema():
     schema_path = ROOT / "schemas" / "final_report.schema.json"
-    example_path = ROOT / "examples" / "expected_outputs" / "final_report_indeterminate.json"
+    example_path = ROOT / "examples" / "expected_outputs" / "final_report_complete.json"
 
     validate_file(example_path, schema_path)
 
 
 def test_final_report_schema_enforces_research_disclaimer_and_severity_label(tmp_path):
     schema_path = ROOT / "schemas" / "final_report.schema.json"
-    example_path = ROOT / "examples" / "expected_outputs" / "final_report_indeterminate.json"
+    example_path = ROOT / "examples" / "expected_outputs" / "final_report_complete.json"
     payload = json.loads(example_path.read_text())
 
     unsafe = dict(payload)
@@ -38,7 +38,7 @@ def test_final_report_schema_enforces_research_disclaimer_and_severity_label(tmp
         validate_file(missing_label_path, schema_path)
 
 
-def test_smoke_test_creates_indeterminate_mock_run():
+def test_smoke_test_creates_complete_quantitative_mock_run():
     result = subprocess.run(
         [sys.executable, "scripts/smoke_test.py", "--case-id", "pytest_mock_case"],
         cwd=ROOT,
@@ -53,10 +53,12 @@ def test_smoke_test_creates_indeterminate_mock_run():
     assert report_path.exists()
 
     report = json.loads(report_path.read_text())
-    assert report["analysis_status"] == "indeterminate"
-    assert report["severity"]["label"] == "indeterminate"
+    assert report["analysis_status"] == "complete"
+    assert report["severity"]["label"] == "severe"
     assert report["research_use_only"] is True
-    assert "validated CWD envelope" in report["missing_information"]
+    assert report["missing_information"] == []
+    assert report["measurements"]
+    assert all(item["artifact_paths"] for item in report["measurements"])
 
 
 def test_no_external_orchestration_frameworks_are_declared():
