@@ -21,6 +21,8 @@
     "agent_results",
     "tool_versions",
     "audit_path",
+    "artifact_index_path",
+    "measurement_completeness",
     "research_use_only"
   ],
   "properties": {
@@ -30,17 +32,14 @@
     "analysis_status": {
       "type": "string",
       "enum": [
-        "complete",
-        "partial",
-        "indeterminate"
+        "complete"
       ]
     },
     "ar_presence": {
       "type": "string",
       "enum": [
         "present",
-        "absent",
-        "uncertain"
+        "absent"
       ]
     },
     "probable_mechanism": {
@@ -80,8 +79,7 @@
             "mild",
             "moderate",
             "moderate_to_severe",
-            "severe",
-            "indeterminate"
+            "severe"
           ]
         },
         "confidence": {
@@ -96,15 +94,84 @@
           "type": "object"
         },
         "reasoning_summary": {
-          "type": "array"
+          "type": "array",
+          "minItems": 1
         }
       }
     },
     "measurements": {
-      "type": "array"
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "measurement_id",
+          "metric",
+          "value",
+          "unit",
+          "selected_frames",
+          "calibration_source",
+          "formula",
+          "ase_interpretation",
+          "technical_validity",
+          "artifact_paths",
+          "quality_flags"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "measurement_id": {
+            "type": "string"
+          },
+          "metric": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "selected_frames": {
+            "type": "array",
+            "minItems": 1
+          },
+          "calibration_source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "formula": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ase_interpretation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "technical_validity": {
+            "type": "string",
+            "enum": [
+              "valid",
+              "limited"
+            ]
+          },
+          "artifact_paths": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "quality_flags": {
+            "type": "array"
+          }
+        }
+      }
     },
     "trusted_metrics": {
-      "type": "array"
+      "type": "array",
+      "minItems": 1
     },
     "downweighted_metrics": {
       "type": "array"
@@ -116,7 +183,8 @@
       "type": "array"
     },
     "missing_information": {
-      "type": "array"
+      "type": "array",
+      "maxItems": 0
     },
     "quality_summary": {
       "type": "object"
@@ -167,6 +235,30 @@
     },
     "audit_path": {
       "type": "string"
+    },
+    "artifact_index_path": {
+      "type": "string"
+    },
+    "measurement_completeness": {
+      "type": "object",
+      "required": [
+        "required_metrics",
+        "repair_history",
+        "complete_exam_assumption"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "required_metrics": {
+          "type": "array",
+          "minItems": 1
+        },
+        "repair_history": {
+          "type": "array"
+        },
+        "complete_exam_assumption": {
+          "const": true
+        }
+      }
     },
     "research_use_only": {
       "const": true

@@ -1,18 +1,14 @@
 {
-  "case_id": "mock_case_indeterminate",
+  "case_id": "mock_case_complete",
   "created_at": "2026-06-19T00:00:00Z",
   "input_files": [],
   "series": [],
   "patient_metadata_redacted": true,
   "calibration_summary": {
-    "pixel_spacing": false,
-    "doppler_scale": false,
-    "nyquist_velocity": false
+    "pixel_spacing": true,
+    "doppler_scale": true,
+    "nyquist_velocity": true
   },
-  "missing_information": [
-    "No real study supplied",
-    "Nyquist velocity",
-    "validated CWD envelope"
-  ],
+  "missing_information": [],
   "file_hashes": {}
 }

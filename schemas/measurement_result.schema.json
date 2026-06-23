@@ -28,10 +28,7 @@
       "type": "string"
     },
     "value": {
-      "type": [
-        "number",
-        "null"
-      ]
+      "type": "number"
     },
     "unit": {
       "type": "string"
@@ -43,16 +40,11 @@
       "type": "array"
     },
     "calibration_source": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string",
+      "minLength": 1
     },
     "formula": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "uncertainty": {
       "type": [
@@ -61,10 +53,8 @@
       ]
     },
     "ase_interpretation": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string",
+      "minLength": 1
     },
     "technical_validity": {
       "type": "string",
@@ -81,7 +71,12 @@
       "type": "string"
     },
     "artifact_paths": {
-      "type": "array"
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "quality_flags": {
       "type": "array"

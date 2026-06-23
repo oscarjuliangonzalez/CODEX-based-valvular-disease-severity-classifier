@@ -11,6 +11,11 @@ from pathlib import Path
 from typing import Callable, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.validate_json_outputs import validate_file
+
 TEMPLATE_PATH = ROOT / "prompts" / "CLI_AR_EXECUTION_TEMPLATE.md"
 
 
@@ -35,6 +40,7 @@ class CaseRunResult:
     prompt: str
     returncode: int
     dry_run: bool
+    error_message: str | None = None
 
 
 Runner = Callable[..., subprocess.CompletedProcess]
@@ -113,6 +119,31 @@ def build_codex_command(prompt: str, *, codex_bin: str = "codex", sandbox: str =
     return [codex_bin, "exec", "--sandbox", sandbox, prompt]
 
 
+def _artifact_path(repo_root: Path, artifact_path: str) -> Path:
+    path = Path(artifact_path)
+    return path if path.is_absolute() else repo_root / path
+
+
+def validate_completed_case_outputs(repo_root: Path, case_id: str) -> None:
+    run_dir = repo_root / "runs" / case_id
+    final_report = run_dir / "final_report.json"
+    audit = run_dir / "audit.json"
+    artifact_index = run_dir / "artifact_index.json"
+    agents_dir = run_dir / "agents"
+    for path in [final_report, audit, artifact_index, agents_dir]:
+        if not path.exists():
+            raise FileNotFoundError(f"case run did not produce required output: {_relative(path, repo_root)}")
+
+    report = validate_file(final_report, repo_root / "schemas" / "final_report.schema.json")
+    measurements = report.get("measurements") or []
+    if not measurements:
+        raise ValueError(f"case {case_id} completed without quantitative measurements")
+    for measurement in measurements:
+        for artifact in measurement.get("artifact_paths", []):
+            if not _artifact_path(repo_root, artifact).exists():
+                raise FileNotFoundError(f"measurement artifact is missing: {artifact}")
+
+
 def _case_dirs_for_config(config: CliConfig) -> Iterable[Path]:
     if config.mode == "single":
         if config.case_dir is None:
@@ -133,9 +164,17 @@ def run_cases(config: CliConfig, runner: Runner = subprocess.run) -> list[CaseRu
         command = build_codex_command(prompt, codex_bin=config.codex_bin, sandbox=config.sandbox)
         if config.dry_run:
             returncode = 0
+            error_message = None
         else:
             completed = runner(command, cwd=repo_root, text=True)
             returncode = completed.returncode
+            error_message = None
+            if returncode == 0:
+                try:
+                    validate_completed_case_outputs(repo_root, case_dir.name)
+                except Exception as exc:
+                    returncode = 1
+                    error_message = str(exc)
         result = CaseRunResult(
             case_id=case_dir.name,
             case_dir=_relative(case_dir, repo_root),
@@ -144,6 +183,7 @@ def run_cases(config: CliConfig, runner: Runner = subprocess.run) -> list[CaseRu
             prompt=prompt,
             returncode=returncode,
             dry_run=config.dry_run,
+            error_message=error_message,
         )
         results.append(result)
         if returncode != 0 and not config.continue_on_failure:
@@ -192,6 +232,7 @@ def main(argv: list[str] | None = None) -> int:
                 "run_dir": item.run_dir,
                 "returncode": item.returncode,
                 "command": item.command,
+                "error_message": item.error_message,
             }
             for item in results
         ],

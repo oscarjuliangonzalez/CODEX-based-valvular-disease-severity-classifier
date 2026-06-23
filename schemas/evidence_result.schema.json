@@ -14,6 +14,7 @@
     "excluded_metrics",
     "discordances",
     "missing_information",
+    "repair_requests",
     "guideline_provenance"
   ],
   "properties": {
@@ -21,7 +22,12 @@
       "type": "string"
     },
     "status": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "complete",
+        "repair_required",
+        "engineering_failure"
+      ]
     },
     "severity": {
       "type": "object"
@@ -30,7 +36,8 @@
       "type": "object"
     },
     "metric_contributions": {
-      "type": "array"
+      "type": "array",
+      "minItems": 1
     },
     "trusted_metrics": {
       "type": "array"
@@ -45,6 +52,10 @@
       "type": "array"
     },
     "missing_information": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "repair_requests": {
       "type": "array"
     },
     "guideline_provenance": {

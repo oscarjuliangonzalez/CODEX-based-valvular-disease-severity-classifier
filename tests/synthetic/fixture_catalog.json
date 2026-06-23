@@ -13,10 +13,10 @@
     "pwd_holodiastolic_reversal",
     "lv_area_curve",
     "volumetric_known_rvol_rf",
-    "discordant_metrics",
-    "missing_calibration",
-    "unknown_view",
-    "mask_review_rejection",
+    "discordant_metrics_requiring_repair",
+    "calibration_extraction_repair",
+    "view_classification_repair",
+    "mask_review_repair",
     "repair_case"
   ],
   "note": "Synthetic fixtures are JSON manifests and deterministic arrays only; no PHI or patient images are included."

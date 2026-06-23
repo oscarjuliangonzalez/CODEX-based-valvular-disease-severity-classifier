@@ -1,0 +1,137 @@
+{
+  "case_id": "mock_case_complete",
+  "analysis_status": "complete",
+  "ar_presence": "present",
+  "probable_mechanism": {
+    "label": "synthetic_complete_exam_fixture",
+    "confidence": 0.8,
+    "limitations": [
+      "Synthetic fixture for contract validation only."
+    ]
+  },
+  "severity": {
+    "label": "severe",
+    "confidence": "high",
+    "evidence_vector": {
+      "mild_support": 0,
+      "moderate_support": 0,
+      "severe_support": 0.78,
+      "unclassified_support": 0.22
+    },
+    "reasoning_summary": [
+      "Synthetic calibrated measurements satisfy the complete-exam quantitative contract."
+    ]
+  },
+  "measurements": [
+    {
+      "measurement_id": "synthetic_vcw",
+      "metric": "vena_contracta_width_cm",
+      "value": 0.72,
+      "unit": "cm",
+      "per_frame_values": [
+        {
+          "frame_index": 3,
+          "value": 0.72
+        }
+      ],
+      "selected_frames": [
+        {
+          "source_file": "examples/mock_case/synthetic_color_doppler.dcm",
+          "frame_index": 3
+        }
+      ],
+      "calibration_source": "synthetic_pixel_spacing:0.01_cm_per_px",
+      "formula": "direct calibrated measurement line",
+      "uncertainty": {
+        "absolute": 0.02,
+        "unit": "cm"
+      },
+      "ase_interpretation": "severe_supporting",
+      "technical_validity": "valid",
+      "reliability_weight_proposal": 0.9,
+      "reliability_reason": "synthetic complete-exam fixture",
+      "artifact_paths": [
+        "runs/mock_case_complete/agents/vena_contracta/artifacts/vcw_overlay.png"
+      ],
+      "quality_flags": []
+    },
+    {
+      "measurement_id": "synthetic_pht",
+      "metric": "pressure_half_time_ms",
+      "value": 180,
+      "unit": "ms",
+      "per_frame_values": [],
+      "selected_frames": [
+        {
+          "source_file": "examples/mock_case/synthetic_cwd.dcm",
+          "frame_index": 0
+        }
+      ],
+      "calibration_source": "synthetic_spectral_scale:time_velocity_axes",
+      "formula": "pressure half-time from calibrated AR CWD envelope",
+      "uncertainty": {
+        "absolute": 8,
+        "unit": "ms"
+      },
+      "ase_interpretation": "severe_supporting",
+      "technical_validity": "valid",
+      "reliability_weight_proposal": 0.75,
+      "reliability_reason": "synthetic complete-exam fixture; PHT is load dependent",
+      "artifact_paths": [
+        "runs/mock_case_complete/agents/cwd_analysis/artifacts/cwd_envelope_overlay.png"
+      ],
+      "quality_flags": [
+        "load_dependent_metric"
+      ]
+    }
+  ],
+  "trusted_metrics": [
+    "vena_contracta_width_cm",
+    "pressure_half_time_ms"
+  ],
+  "downweighted_metrics": [],
+  "excluded_metrics": [],
+  "discordances": [],
+  "missing_information": [],
+  "quality_summary": {
+    "artifact_review": "synthetic_artifacts_present",
+    "safety_review": "passed_for_research_disclaimer",
+    "complete_exam_contract": "quantitative_measurements_present"
+  },
+  "recommendations": [
+    "Use only as a software contract fixture; do not claim clinical validation from synthetic data."
+  ],
+  "guideline_provenance": [
+    {
+      "source_id": "ase_2017_native_valvular_regurgitation",
+      "source_file": "2017VavularRegurgitationGuideline.pdf",
+      "section": "Aortic Regurgitation",
+      "table_or_figure": "Table 11 and Figure 25",
+      "pages": [
+        38,
+        42,
+        43
+      ],
+      "implementation_use": "AR thresholds, integrative assessment, flow reversal, and PHT limitations"
+    }
+  ],
+  "agent_results": [],
+  "tool_versions": [
+    {
+      "tool_id": "deterministic_mock_tools",
+      "version": "1.0.0",
+      "clinical_validation": false
+    }
+  ],
+  "audit_path": "runs/mock_case_complete/audit.json",
+  "artifact_index_path": "runs/mock_case_complete/artifact_index.json",
+  "measurement_completeness": {
+    "required_metrics": [
+      "vena_contracta_width_cm",
+      "pressure_half_time_ms"
+    ],
+    "repair_history": [],
+    "complete_exam_assumption": true
+  },
+  "research_use_only": true
+}

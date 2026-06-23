@@ -39,9 +39,8 @@
         "success",
         "partial",
         "failed",
-        "insufficient_data",
-        "invalid_calibration",
-        "abstained"
+        "repair_required",
+        "engineering_failure"
       ]
     },
     "tool_ids": {
@@ -57,7 +56,10 @@
       "type": "array"
     },
     "measurements": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
     },
     "evidence": {
       "type": "object"
