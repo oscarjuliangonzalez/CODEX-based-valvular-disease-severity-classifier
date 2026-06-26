@@ -7,11 +7,11 @@ description: Use when classifying echo modality or view from metadata, geometry,
 
 ## Purpose
 
-Produce ranked modality/view candidates for each series/frame with confidence, evidence, and measurement suitability. This skill supports research and decision-support development only; it must not claim autonomous diagnosis or clinical validation.
+Produce ranked modality/view candidates for each medical image or series with confidence, evidence, and measurement suitability.
 
 ## Measurable Job
 
-Produce ranked modality/view candidates for each series/frame with confidence, evidence, and measurement suitability.
+Produce ranked modality/view candidates for each medical image or series with confidence, evidence, and measurement suitability.
 
 ## Required Inputs
 
@@ -25,9 +25,17 @@ No physical measurement is reported by this skill, but it must preserve frame/so
 
 View classification JSON, representative frame contact sheet, evidence table, and rejected-candidate notes. Every artifact needed for review must be saved under the assigned run directory and referenced by path in JSON.
 
+## Evidence Requirements
+
+For every usable image or series, write one machine-readable record with source file provenance, frame count, series/SOP UIDs when present, derived media paths, selected view, selected modality, ranked candidates, confidence, metadata evidence, visual evidence paths, limitations, repair history, and measurement suitability. Use DICOM ultrasound region tags, frame geometry, color/spectral layout, on-image evidence artifacts, and any safe structured-report view hints when available. Spectral Doppler classification must preserve time/velocity calibration provenance from DICOM region tags when present, including baseline/reference pixels and physical deltas.
+
 ## First Failed Attempt
 
 If confidence is low, add metadata/frame-evidence features or a view-classification adapter repair, then rerun classification instead of stopping the case.
+
+## Repair-Loop Behavior
+
+Do not leave `unknown` or unable-to-classify as a terminal result for complete high-quality exam validation. Low confidence, missing pixel decode support, absent media artifacts, unsupported vendor layout, missing DICOM calibration, or failed spectral-region parsing is a tooling defect: record a structured repair_required event, improve the parser/decoder/layout/classifier adapter, rerun the affected source objects, and preserve both the original failure and repaired result in the audit. Do not force a label when the evidence is weak; improve the evidence path until ranked candidates and a selected view are defensible, or record engineering_failure with a concrete next repair task.
 
 ## Adapter Tool Improvement Loop
 

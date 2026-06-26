@@ -1,0 +1,19 @@
+{
+  "tool_id": "view_classifier_validation_adapter",
+  "version": "1.0.0",
+  "created_for_case": "A1-A5",
+  "purpose": "Local DICOM inventory, JPEG Lossless media decoding, ultrasound-region modality classification, and calibrated CWD/PWD spectral trace extraction for view-classifier validation.",
+  "input_contract": "A de-identified echo case folder containing DICOM US/SR/PR objects and sidecar files.",
+  "output_contract": "runs/view_classifier_validation/<case_id> JSON artifacts plus derived local media and spectral trace artifacts.",
+  "tests_passed": true,
+  "validation_scope": "Focused unit tests and A1-A5 local validation workflow; no clinical validation claimed.",
+  "clinical_validation": false,
+  "limitations": [
+    "View labels use ranked metadata, DICOM region, visual-feature, and acquisition-order evidence and require independent review.",
+    "PWD sample-site interpretation is not converted to severity without explicit site evidence.",
+    "PHI-risk DICOM tag values and private values are redacted from JSON outputs."
+  ],
+  "supersedes": null,
+  "git_commit": null,
+  "implementation": "ar_core/view_validation.py"
+}

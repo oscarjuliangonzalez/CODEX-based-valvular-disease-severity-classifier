@@ -1,0 +1,4 @@
+interface:
+  display_name: "Relay"
+  short_description: "Long-running missions with durable state"
+  default_prompt: "Use $relay to create or reopen a durable mission in the current project, keep progress on disk under .relay/<case>/, refresh threads periodically, run the validator after every episode, and keep going until the validator passes, the deadline expires, or a stop request is present. Compose it with any installed skills as needed."
