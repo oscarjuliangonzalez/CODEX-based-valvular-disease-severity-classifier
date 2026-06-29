@@ -1,0 +1,83 @@
+# Agentic Modality And Zoom Definitions
+
+Use these definitions with local rendered frames/cine previews, DICOM metadata, and guideline provenance.
+
+## Modality And Layout Cues
+### 2D
+- grayscale anatomy
+- no persistent red-blue flow overlay
+- no spectral velocity-time panel
+
+### color Doppler
+- red and blue flow overlay inside the 2D sector
+- color-flow jet or color map evidence
+- 2D anatomy remains visible behind color pixels
+
+### CWD
+- spectral Doppler velocity over time
+- continuous-wave spectral calibration
+- high-velocity envelope display
+
+### PWD
+- spectral Doppler velocity over time
+- pulsed-wave spectral calibration
+- sample volume or sample-site evidence required for AR interpretation
+
+### M-mode
+- motion over time with depth axis
+- DICOM ultrasound region in seconds by distance
+- linear time-depth stripe layout
+
+## Zoom Status Cues
+### zoomed_in
+- cropped field of view
+- enlarged valve, root, or jet region
+- surrounding chamber context partly absent
+- region area occupies most of the frame
+- metadata or overlay suggests zoom focus
+
+### not_zoomed
+- full sector field of view
+- surrounding chambers and adjacent anatomy visible
+- balanced field around target anatomy
+
+## Measurement Suitability Implications
+- Spectral Doppler requires time/velocity calibration provenance before reporting velocities or envelopes.
+- PWD aortic flow reversal must not be interpreted for severity unless sample site evidence is known.
+- Color Doppler and zoomed views can support jet localization, but quantitative measurements still need calibration and inspectable artifacts.
+
+## Source Provenance
+### 2013_Performing-Comprehensive-TEE.pdf
+- Path: `/Users/general/Library/CloudStorage/Box-Box/aether.lab/people/Oscar/Methods/codex-based-valvular-severity-classifier/CODEX-based-valvular-disease-severity-classifier/guidelines/2013_Performing-Comprehensive-TEE.pdf`
+- Extraction method: `pdf_text`
+- Relevant local text snippets:
+  - linear measurement of the left atrium that has best correlated with transthoracic echocardio- graphic anteroposterior (parasternal LAX) measurements is taken from the ME A V LAX view (view #6) or the ME A V SAX view (view #10), measuring from the apex of the sector (i.e., the posterior wall of the left atrium
+  - n be seen simultaneously. T urning the probe to the right from this view will typically image the mid-RV in SAX. 18. TG Apical SAX View (Video 18) From the TG midpapillary SAX view (0 /C14-20/C14), the probe is advanced while maintaining contact with the gastric wall, to obtain the TG apical SAX view. The
+  - ansducer into the esophagus and stomach, and in adjusting probe position to obtain the necessary tomographic images and Doppler data. /C15Knowledge of infection control measures and electrical safety issues related to the use of TEE. /C15Proﬁciency in operating correctly the ultrasonographic instrument, in
+  - eal ultrasound was ﬁrst reported in 1971 to measure ﬂow in the aortic arch. 1 This was followed in 1976 by its use with M-mode echocardiogra- phy 2 and then in 1977 by two- dimensional (2D) imaging using a mechanical scanning trans- ducer.3 The modern era of TEE really began in 1982, with the in- troducti
+  - en saturation by pulse oximetry. Arterial blood with elevated methemoglobin levels has a characteristic chocolate-brown color compared with normal bright red oxygen-containing arterial blood. T reatment of this acquired disease is imperative because with severe methemoglobinemia (methemoglobin level > 55
+  - sition regardless if viewed from the LA or the L V perspective (Figure 6). Wide-Angle 3D Mode. The focused wide sector (zoom view) per- mits a focused, wide-sector view of the MV apparatus from the an- nulus to the papillary muscle tips. It allows visualization of the mitral apparatus from the annulus t
+### 2017VavularRegurgitationGuideline.pdf
+- Path: `/Users/general/Library/CloudStorage/Box-Box/aether.lab/people/Oscar/Methods/codex-based-valvular-severity-classifier/CODEX-based-valvular-disease-severity-classifier/guidelines/2017VavularRegurgitationGuideline.pdf`
+- Extraction method: `pdf_text`
+- Relevant local text snippets:
+  - window as systolic displacement of the mitral leaﬂet into the LA of at least 2 mm from the mitral annular plane. 95 If parasternal windows are of poor quality, the apical long-axis view can also be used, although the latter is less standardized and thus more variable. Diagnosis of MVP should be avoided in the
+  - h the leaﬂets at different locations. A cross- commissural view (typically by TEE but approximated by the transthoracic apical two-chamber view) is good at identifying the lateral (P1) and medial (P3) scallops of the posterior leaﬂet and the middle (A2) anterior leaﬂet. The optimal view of the coaptation
+  - tiple jets /C15 In order to measure it, convergence zone needs to be visualized Jet area /C15 Four chamber, RV inﬂow or subcostal views /C15 Qualitative /C15 Dependent on the driving pressure and jet direction /C15 Direction and shape of jet may overestimate (central entrainment) or underestimate (eccentric,
+  - asternal window may be helpful. 182 b. Pulsed wave Doppler. Aortic diastolic ﬂow reversal: pulsed wave Doppler from the suprasternal window in the descending aorta often shows a brief early diastolic ﬂow reversal in normals. Holodiastolic ﬂow reversal is an abnormal ﬁnding ( Figure 22 ) and indicates at least m
+  - 306 a. Valve structure and severity of regurgitation 306 b. Impact of regurgitation on cardiac remodeling 307 3. Color Doppler Imaging 307 a. Jet characteristics and jet area 308 b. V ena contracta 309 c. Flow convergence 309 4. Pulsed Doppler 310 a. Forward ﬂow 310 b. Flow reversal 310 5. Continuous Wave
+  - on with echocardiography: a. Comprehensive imaging. All modalities included in the standard TTE evaluation inclusive of M-mode, 2D, and 3D where applicable, pulsed, color, continuous wave Doppler (CWD), and combined qual- itative and quantitative assessment contribute to valve regurgitation assessment. b.
+  - maging 306 a. Valve structure and severity of regurgitation 306 b. Impact of regurgitation on cardiac remodeling 307 3. Color Doppler Imaging 307 a. Jet characteristics and jet area 308 b. V ena contracta 309 c. Flow convergence 309 4. Pulsed Doppler 310 a. Forward ﬂow 310 b. Flow reversal 310 5. Continu
+  - w orientation is best achieved for aortic 28 or pulmonary regurgitation (PR), less for MR,16 and even less for TR. 29 A zoomed view is also indispensable to minimize the measurement inaccuracies for a width of a few milli- meters. VCA tracing requires 3D imaging and is achieved ofﬂine by reorienting ima
+### Guidelines-for-Performing-a-Comprehensive-Transthoracic-Echocardiographic-Examination-in-Adults.pdf
+- Path: `/Users/general/Library/CloudStorage/Box-Box/aether.lab/people/Oscar/Methods/codex-based-valvular-severity-classifier/CODEX-based-valvular-disease-severity-classifier/guidelines/Guidelines-for-Performing-a-Comprehensive-Transthoracic-Echocardiographic-Examination-in-Adults.pdf`
+- Extraction method: `pdf_text`
+- Relevant local text snippets:
+  - n MS = Mitral stenosis MV = Mitral valve NCC = Noncoronary cusp PA = Pulmonary artery PFO = Patent foramen ovale PLAX = Parasternal long-axis PMPap = Posteromedial papillary muscle PMVL = Posterior leaﬂet mitral valve PR = Pulmonic valve regurgitation PRF = Pulse repetition frequency PSAX = Parasternal short-a
+  - ler 12 7 . Doppler Tissue Imaging 15 C. Color Doppler Imaging 17 Abbreviations 2D = Two-dimensional 3C = Three-chamber (apical long axis) 3D = Three-dimensional 4C = Four-chamber 5C = Five-chamber A2C = Apical two-chamber A4C = Apical four-chamber Abd Ao = Abdominal aorta ALPap = Anterolateral papillary m
+  - RV = Right ventricular RVIDd = Right ventricular internal dimension diastole RVOT = Right ventricular outﬂow tract SC = Subcostal SoVAo = Sinus of Valsalva SSN = Suprasternal notch STJ = Sinotubular junction SVC = Superior vena cava TAPSE = Tricuspid annular plane systolic excursion TGC = Time-gain compensat
+  - icular internal dimension diastole RVOT = Right ventricular outﬂow tract SC = Subcostal SoVAo = Sinus of Valsalva SSN = Suprasternal notch STJ = Sinotubular junction SVC = Superior vena cava TAPSE = Tricuspid annular plane systolic excursion TGC = Time-gain compensation TR = Tricuspid valve regurgitation TTE =
+  - olina; Salt Lake City, Utah; Ikoyi, Lagos, Nigeria; and Hartford, Connecticut Keywords: Transthoracic echocardiography, Doppler echocardiography, Color Doppler echocardiography, Comprehensive examination, Protocol TABLE OF CONTENTS I. Introduction 3 II. Nomenclature 4 A. Image Acquisition Windows 4 B. Scan
+  - me 33 2. LA V olume 33 3. RV Linear Dimensions 33 4. RV Area 33 5. Right Atrial V olume 33 D. SC Views 37 1. IVC 37 VI. M-Mode Measurements 37 A. T APSE 37 B. IVC 37 C. A V 37 VII. CDI 37 A. RVOT, Pulmonary Valve, and PA 41 B. RV Inﬂow and TV 41 C. L V Inﬂow and MV 41 D. L VOT and A V 42 E. Aortic Arch 42
+  - h; Ikoyi, Lagos, Nigeria; and Hartford, Connecticut Keywords: Transthoracic echocardiography, Doppler echocardiography, Color Doppler echocardiography, Comprehensive examination, Protocol TABLE OF CONTENTS I. Introduction 3 II. Nomenclature 4 A. Image Acquisition Windows 4 B. Scanning Maneuvers 5 C. Meas
+  - 7317/$36.00 Copyright 2018 by the American Society of Echocardiography. https://doi.org/10.1016/j.echo.2018.06.004 1 9. Zoom/Magniﬁcation 8 10. Frame Rate 8 B. Spectral Doppler 8 1. V elocity Scale 8 2. Sweep Speed 8 3. Sample V olume Size 10 4. Wall Filters and Gain 10 5. Display Settings 12 6. Pulsed-

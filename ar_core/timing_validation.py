@@ -22,15 +22,15 @@ import pydicom
 from PIL import Image, ImageDraw
 from pydicom.multival import MultiValue
 
-from ar_core.view_validation import (
-    _frame_array,
-    _frame_count_from_decoded,
-    _jsonable,
-    _safe_int,
+from ar_core.agentic_view_classifier import run_validation as run_view_validation
+from ar_core.dicom_media import (
     convert_dicom_media,
     decode_pixel_array,
     extract_ultrasound_regions,
-    run_validation as run_view_validation,
+    frame_array as _frame_array,
+    frame_count_from_decoded as _frame_count_from_decoded,
+    jsonable as _jsonable,
+    safe_int as _safe_int,
 )
 
 

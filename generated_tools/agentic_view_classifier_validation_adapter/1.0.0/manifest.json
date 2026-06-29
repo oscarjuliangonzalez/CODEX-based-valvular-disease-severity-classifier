@@ -1,0 +1,20 @@
+{
+  "tool_id": "agentic_view_classifier_validation_adapter",
+  "version": "1.0.0",
+  "created_for_case": "A1-A5",
+  "purpose": "Local evidence-generation and agent-result validation workflow for agentic view classification, with DICOM metadata extraction, rendered media evidence, guideline summaries, Codex specialist task prompts, and preserved PWD/CWD spectral extraction.",
+  "input_contract": "A de-identified echo case folder containing DICOM US/SR/PR objects and sidecar files.",
+  "output_contract": "runs/agentic_view_classifier_validation/<case_id> JSON artifacts plus derived local media and spectral trace artifacts.",
+  "tests_passed": true,
+  "validation_scope": "Focused unit tests and local A1-A5 validation workflow; no clinical validation claimed.",
+  "clinical_validation": false,
+  "limitations": [
+    "Python evidence tools do not choose view, modality, or zoom status; Codex specialist agents author classification records.",
+    "PWD sample-site interpretation is not converted to severity without explicit site evidence.",
+    "PHI-risk DICOM tag values and private values are redacted from JSON outputs.",
+    "Guideline summaries are local agent-usable extracts and do not replace full guideline review."
+  ],
+  "supersedes": "view_classifier_validation_adapter/1.0.0",
+  "git_commit": null,
+  "implementation": "ar_core/agentic_view_classifier.py"
+}

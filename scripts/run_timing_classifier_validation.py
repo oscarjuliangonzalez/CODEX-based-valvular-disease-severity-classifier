@@ -21,7 +21,7 @@ def main() -> int:
         default="/Users/general/Library/CloudStorage/Box-Box/Purdue-HackensackUMH/4-Data",
     )
     parser.add_argument("--output-root", default=str(ROOT / "runs" / "timing_classifier_validation"))
-    parser.add_argument("--view-output-root", default=str(ROOT / "runs" / "view_classifier_validation"))
+    parser.add_argument("--view-output-root", default=str(ROOT / "runs" / "agentic_view_classifier_validation"))
     parser.add_argument("--cases", nargs="+", default=["A1", "A2", "A3", "A4", "A5"])
     parser.add_argument("--max-video-frames", type=int, default=80)
     parser.add_argument("--force-view-refresh", action="store_true")

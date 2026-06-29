@@ -9,13 +9,10 @@ from pydicom.dataset import Dataset, FileDataset, FileMetaDataset
 from pydicom.sequence import Sequence
 from pydicom.uid import ExplicitVRLittleEndian, generate_uid
 
-from ar_core.view_validation import (
-    classify_source_object,
-    convert_dicom_media,
-    extract_spectral_trace,
-    extract_ultrasound_regions,
-    inventory_case,
-)
+from ar_core.agentic_view_classifier import build_agent_task, build_evidence_packet, validate_agent_view_record
+from ar_core.dicom_media import convert_dicom_media, extract_ultrasound_regions, inventory_case
+from ar_core.guideline_summary import build_guideline_summaries
+from ar_core.spectral import extract_spectral_trace
 
 
 def _region(
@@ -130,7 +127,7 @@ def test_media_conversion_writes_representative_frames_and_mapping(tmp_path: Pat
     assert Path(media["video_path"]).exists()
 
 
-def test_classification_record_contract_selects_view_and_modality() -> None:
+def test_agentic_evidence_packet_and_agent_record_contract(tmp_path: Path) -> None:
     metadata = {
         "case_id": "T1",
         "source_file": "/case/KX000003",
@@ -151,17 +148,48 @@ def test_classification_record_contract_selects_view_and_modality() -> None:
                 ref_y=80,
             )
         ],
-        "sr_view_hints": ["Apical four chamber"],
     }
 
-    record = classify_source_object(metadata, {"representative_frame_paths": ["frame.png"]})
+    summaries = build_guideline_summaries(Path("guidelines"), tmp_path / "summaries")
+    packet = build_evidence_packet(
+        metadata,
+        {
+            "decode_status": "success",
+            "representative_frame_paths": ["frame.png"],
+            "features": {"primary_region_aspect_ratio": 1.0, "bright_pixel_roundness": 0.4},
+        },
+        summaries,
+    )
+    task = build_agent_task(packet, skill_path=Path(".agents/skills/echo-view-classification/SKILL.md"))
+    record = {
+        "case_id": "T1",
+        "source_file": "/case/KX000003",
+        "source_type": "dicom",
+        "series_uid": "series",
+        "sop_instance_uid": "sop",
+        "frame_count": 1,
+        "derived_media_paths": ["frame.png"],
+        "selected_view": "A3C",
+        "selected_modality": "CWD",
+        "zoom_status": "not_zoomed",
+        "zoom_confidence": 0.71,
+        "ranked_view_candidates": [{"view": "A3C", "confidence": 0.8, "evidence": ["agent visual review"]}],
+        "ranked_modality_candidates": [{"modality": "CWD", "confidence": 0.9, "evidence": ["agent reviewed spectral layout"]}],
+        "ranked_zoom_candidates": [{"zoom_status": "not_zoomed", "confidence": 0.71, "evidence": ["agent reviewed full field"]}],
+        "confidence": 0.79,
+        "guideline_evidence": {"summary_files": packet["guideline_summary_files"], "evidence": ["guideline summary used"]},
+        "metadata_evidence": [],
+        "visual_observations": {"modality_layout": "spectral Doppler panel", "zoom_indicators": ["full field"]},
+        "visual_evidence_artifact_paths": ["frame.png"],
+        "agent_reasoning_summary": "Agent inspected rendered evidence and selected A3C CWD.",
+        "measurement_suitability": {"spectral_velocity_trace": True},
+        "limitations": [],
+        "repair_history": [],
+    }
 
-    assert record["selected_view"] == "A4C"
-    assert record["selected_modality"] == "CWD"
-    assert record["confidence"] >= 0.7
-    assert record["ranked_candidates"][0]["view"] == "A4C"
-    assert record["measurement_suitability"]["spectral_velocity_trace"] is True
-    assert record["evidence"]
+    assert "selected_view" not in packet
+    assert "Inspect the rendered media" in task["prompt"]
+    validate_agent_view_record(record, packet)
 
 
 def test_spectral_trace_extraction_writes_calibrated_json_csv_and_overlay(tmp_path: Path) -> None:
